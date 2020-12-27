@@ -8,5 +8,5 @@ hence the name of the project) representation of a relief landscape linking vari
 
 	make && ./fdf tests/[map]
 
-<img align="left" width="595" height="395" SRC="pics/fdf_pic_1.png">
-<img align="left" width="595" height="395" SRC="pics/fdf_pic_2.png">
+<img align="left" width="800" height="530" SRC="pics/fdf_pic_1.png">
+<img align="left" width="800" height="530" SRC="pics/fdf_pic_2.png">
