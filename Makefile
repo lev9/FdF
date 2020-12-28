@@ -12,12 +12,18 @@
 
 NAME = fdf
 
+LIBMLX2 = ./lib/libmlx2
+
+LIBFT = ./lib/libft
+
 SRC = main.c keys.c reader.c image.c draw.c user.c actions.c actions2.c color.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
-REST = -L /usr/local/lib -lmlx -I /usr/X11/include -L/usr/X11/lib -lX11 \
-	-lXext -framework OpenGL -framework Appkit -L./libft -lft
+MLXFLAGS = -I$(LIBMLX2) -L$(LIBMLX2) -lmlx -I /usr/X11/include \
+	-L/usr/X11/lib -lX11 -lXext -framework OpenGL -framework Appkit
+
+LIBFTFLAGS = -L$(LIBFT) -lft
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -26,16 +32,17 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	make -C libft/
+	make -C $(LIBFT)/
+	make -C $(LIBMLX2)/
 	gcc $(FLAGS) -I libft/ -c $(SRC)
-	gcc $(FLAGS) -o $(NAME) $(OBJ) $(REST)
+	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBFTFLAGS) $(MLXFLAGS)
 
 clean:
 	/bin/rm -f $(OBJ)
-	make clean -C libft/
+	make clean -C $(LIBFT)/
 
 fclean: clean
-	make fclean -C libft/
+	make fclean -C $(LIBFT)/
 	/bin/rm -f $(NAME)
 
 re: fclean all
