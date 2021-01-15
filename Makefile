@@ -20,7 +20,7 @@ SRC = main.c keys.c reader.c image.c draw.c user.c actions.c actions2.c color.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
-MLXFLAGS = -I$(LIBMLX2) -L$(LIBMLX2) -lmlx -I /usr/X11/include \
+MLXFLAGS = -L$(LIBMLX2) -lmlx -I /usr/X11/include \
 	-L/usr/X11/lib -lX11 -lXext -framework OpenGL -framework Appkit
 
 LIBFTFLAGS = -L$(LIBFT) -lft
